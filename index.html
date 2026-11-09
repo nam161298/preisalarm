@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Preisalarm">
+<title>Preisalarm</title>
+<style>
+:root { color-scheme: light dark; --bg:#f4f4f2; --card:#fff; --text:#1c1c1c; --muted:#6b6b6b; --line:#dedede; --accent:#0a6ebd; --on-accent:#fff;
+  --good:#17803d; --ok:#9a6700; --bad:#b42318; --neutral:#5f6368; }
+@media (prefers-color-scheme: dark) { :root { --bg:#141414; --card:#1f1f1f; --text:#f1f1f1; --muted:#a3a3a3; --line:#333; --accent:#5cb0f2; --on-accent:#000;
+  --good:#4ac776; --ok:#e3b341; --bad:#f97066; --neutral:#a3a3a3; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 24px); }
+main { max-width:560px; margin:0 auto; }
+header { display:flex; align-items:center; gap:8px; margin-bottom:12px; }
+h1 { font-size:24px; margin:0; flex:1; }
+h2 { font-size:17px; margin:0 0 4px; overflow-wrap:anywhere; }
+button { font:inherit; min-height:44px; padding:8px 14px; border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--text); cursor:pointer; }
+button.primary { background:var(--accent); border-color:var(--accent); color:var(--on-accent); font-weight:600; }
+.card, form { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:12px; }
+.price { font-size:26px; font-weight:700; }
+.badge { display:inline-block; font-size:14px; font-weight:700; margin-left:8px; }
+.zuschlagen { color:var(--good); } .ok { color:var(--ok); } .warten { color:var(--bad); } .sammeln { color:var(--neutral); }
+.muted { color:var(--muted); font-size:14px; }
+.error { color:var(--bad); font-size:14px; }
+.actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.actions a { display:inline-flex; align-items:center; min-height:44px; color:var(--accent); padding:0 6px; }
+img.chart { display:block; width:100%; height:auto; border-radius:8px; margin-top:10px; background:#fff; }
+svg.line { display:block; width:100%; height:56px; margin-top:10px; }
+label { display:block; font-size:14px; font-weight:600; margin:10px 0 4px; }
+input { width:100%; font:inherit; min-height:44px; padding:8px 10px; border-radius:10px; border:1px solid var(--line); background:var(--bg); color:var(--text); }
+#status { min-height:22px; margin-bottom:8px; }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Preisalarm</h1>
+    <button id="btnSettings" type="button" aria-label="Einstellungen">Zugang</button>
+    <button id="btnAdd" class="primary" type="button">Neu</button>
+  </header>
+  <div id="status" class="muted" role="status"></div>
+
+  <form id="settings" hidden>
+    <label for="token">GitHub-Token</label>
+    <input id="token" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <p class="muted">Bleibt nur auf diesem Handy gespeichert. Damit darf die App Produkte speichern und eine Prüfung starten.</p>
+    <div class="actions"><button class="primary" type="submit">Speichern</button></div>
+  </form>
+
+  <form id="add" hidden>
+    <label for="name">Produktname</label>
+    <input id="name" required maxlength="120">
+    <label for="url">Link zur Produktseite</label>
+    <input id="url" type="url" inputmode="url" required autocapitalize="off" spellcheck="false" placeholder="https://www.amazon.de/dp/...">
+    <label for="target">Zielpreis in Euro (optional)</label>
+    <input id="target" inputmode="decimal" placeholder="z. B. 205">
+    <div class="actions"><button class="primary" type="submit">Hinzufügen</button></div>
+  </form>
+
+  <div id="list"></div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const labels = { zuschlagen:'Zuschlagen', ok:'Okay', warten:'Warten', sammeln:'Daten sammeln' };
+const FILE = 'data/items.json';
+let items = [], state = {};
+
+const store = {
+  get(k) { try { return localStorage.getItem(k) || ''; } catch { return ''; } },
+  set(k, v) { try { localStorage.setItem(k, v); } catch {} },
+};
+function repoInfo() {
+  const m = location.hostname.match(/^(.+)\.github\.io$/);
+  if (m) return { owner:m[1], repo:location.pathname.split('/')[1] };
+  return window.PREISALARM_REPO || null;
+}
+function api(path, options = {}) {
+  const r = repoInfo();
+  if (!r) throw new Error('Die App läuft nicht auf GitHub Pages.');
+  return fetch(`https://api.github.com/repos/${r.owner}/${r.repo}/${path}`, { ...options, headers: {
+    Authorization:`Bearer ${store.get('token')}`, Accept:'application/vnd.github+json', ...(options.headers || {}) } });
+}
+async function readJson(path) {
+  if (store.get('token') && repoInfo()) {
+    const res = await api(`contents/${path}?t=${Date.now()}`, { headers:{ Accept:'application/vnd.github.raw+json' } });
+    if (res.ok) return res.json();
+    if (res.status === 401) setStatus('Token ungültig. Bitte unter „Zugang“ prüfen.', true);
+  }
+  const res = await fetch(`${path}?t=${Date.now()}`);
+  if (!res.ok) throw new Error(`${path} nicht lesbar`);
+  return res.json();
+}
+function b64(text) { return btoa(String.fromCharCode(...new TextEncoder().encode(text))); }
+async function saveItems(next, message) {
+  if (!store.get('token')) { $('settings').hidden = false; throw new Error('Bitte zuerst unter „Zugang“ dein Token eintragen.'); }
+  const head = await api(`contents/${FILE}?t=${Date.now()}`);
+  if (!head.ok) throw new Error(`GitHub meldet Fehler ${head.status}`);
+  const { sha } = await head.json();
+  const res = await api(`contents/${FILE}`, { method:'PUT', body:JSON.stringify({
+    message, sha, content:b64(JSON.stringify(next, null, 2) + '\n') }) });
+  if (!res.ok) throw new Error(`Speichern fehlgeschlagen (${res.status})`);
+  items = next;
+}
+async function runCheck() {
+  const res = await api('actions/workflows/check.yml/dispatches', { method:'POST', body:JSON.stringify({ ref:'main' }) });
+  if (!res.ok) throw new Error(`Prüfung nicht gestartet (${res.status})`);
+}
+function setStatus(text, isError = false) { $('status').textContent = text; $('status').className = isError ? 'error' : 'muted'; }
+function euro(n) { return Number(n).toLocaleString('de-DE', { style:'currency', currency:'EUR' }); }
+function parseEuro(text) {
+  const t = text.trim().replace(/\s|€/g, '');
+  if (!t) return null;
+  const n = Number(t.includes(',') ? t.replace(/\./g, '').replace(',', '.') : t);
+  return Number.isFinite(n) && n > 0 ? n : NaN;
+}
+function keepa(url) {
+  try {
+    const u = new URL(url);
+    const host = u.hostname.match(/(?:^|\.)amazon\.([a-z.]+)$/);
+    const asin = u.pathname.match(/\/(?:dp|gp\/product|gp\/aw\/d)\/([A-Z0-9]{10})(?:[/?]|$)/);
+    if (!host || !asin) return null;
+    return `https://graph.keepa.com/pricehistory.png?asin=${asin[1]}&domain=${host[1]}`;
+  } catch { return null; }
+}
+function el(tag, props = {}, ...kids) {
+  const node = document.createElement(tag);
+  Object.assign(node, props);
+  node.append(...kids);
+  return node;
+}
+function sparkline(list) {
+  if (list.length < 2) return null;
+  const ps = list.map(e => e.p), min = Math.min(...ps), max = Math.max(...ps), span = (max - min) || 1;
+  const pts = ps.map((p, i) => `${(i / (ps.length - 1) * 300).toFixed(1)},${(52 - (p - min) / span * 48).toFixed(1)}`).join(' ');
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 300 56'); svg.setAttribute('class', 'line'); svg.setAttribute('preserveAspectRatio', 'none');
+  svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', `Eigene Preisaufzeichnung von ${euro(min)} bis ${euro(max)}`);
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+  line.setAttribute('points', pts); line.setAttribute('fill', 'none'); line.setAttribute('stroke', 'currentColor');
+  line.setAttribute('stroke-width', '2'); line.setAttribute('vector-effect', 'non-scaling-stroke');
+  svg.append(line);
+  return svg;
+}
+function render() {
+  const box = $('list');
+  box.replaceChildren();
+  if (!items.length) { box.append(el('p', { className:'muted', textContent:'Noch keine Produkte. Tippe auf „Neu“.' })); return; }
+  for (const item of items) {
+    const list = (state.prices && state.prices[item.id]) ? [].concat(state.prices[item.id]) : [];
+    const last = list[list.length - 1];
+    const rating = state.ratings && state.ratings[item.id];
+    const err = state.errors && state.errors[item.id];
+    const card = el('article', { className:'card' }, el('h2', { textContent:item.name }));
+    if (last) {
+      const row = el('div', {}, el('span', { className:'price', textContent:euro(last.p) }));
+      if (rating) row.append(el('span', { className:`badge ${rating.label}`, textContent:labels[rating.label] || rating.label }));
+      card.append(row);
+      if (rating) card.append(el('div', { className:'muted', textContent:rating.reason }));
+      const facts = [`Stand ${last.d}`];
+      if (rating) facts.push(`Tief ${euro(rating.low)}`, `Mitte ${euro(rating.median)}`);
+      card.append(el('div', { className:'muted', textContent:facts.join(' · ') }));
+    } else if (!err) {
+      card.append(el('div', { className:'muted', textContent:'Noch nicht geprüft.' }));
+    }
+    if (err) card.append(el('div', { className:'error', textContent:`Letzte Prüfung fehlgeschlagen (${err.count}×): ${err.message}` }));
+    card.append(el('div', { className:'muted', textContent:item.target ? `Zielpreis ${euro(item.target)}` : 'Kein Zielpreis' }));
+    const spark = sparkline(list);
+    if (spark) card.append(spark);
+    const chart = keepa(item.url);
+    if (chart) card.append(el('img', { className:'chart', src:chart, alt:`Keepa-Preisverlauf für ${item.name}`, loading:'lazy' }));
+    const open = /^https?:\/\//i.test(item.url) ? el('a', { href:item.url, target:'_blank', rel:'noopener', textContent:'Zum Shop' }) : '';
+    const edit = el('button', { type:'button', textContent:'Zielpreis', onclick:() => editTarget(item) });
+    const del = el('button', { type:'button', textContent:'Entfernen', onclick:() => removeItem(item) });
+    card.append(el('div', { className:'actions' }, open, edit, del));
+    box.append(card);
+  }
+}
+async function guarded(fn) {
+  try { await fn(); } catch (e) { setStatus(e.message, true); }
+}
+function editTarget(item) {
+  const input = prompt(`Zielpreis für ${item.name} in Euro (leer = keiner):`, item.target || '');
+  if (input === null) return;
+  const target = parseEuro(input);
+  if (Number.isNaN(target)) { setStatus('Bitte einen gültigen Preis eingeben.', true); return; }
+  guarded(async () => {
+    await saveItems(items.map(i => i.id === item.id ? { ...i, target } : i), `Zielpreis: ${item.name}`);
+    setStatus('Gespeichert. Gilt ab der nächsten Prüfung.');
+    render();
+  });
+}
+function removeItem(item) {
+  if (!confirm(`${item.name} wirklich entfernen?`)) return;
+  guarded(async () => {
+    await saveItems(items.filter(i => i.id !== item.id), `Entfernt: ${item.name}`);
+    setStatus('Entfernt.');
+    render();
+  });
+}
+$('btnAdd').onclick = () => { $('add').hidden = !$('add').hidden; $('settings').hidden = true; if (!$('add').hidden) $('name').focus(); };
+$('btnSettings').onclick = () => { $('settings').hidden = !$('settings').hidden; $('add').hidden = true; };
+$('settings').onsubmit = e => {
+  e.preventDefault();
+  store.set('token', $('token').value.trim());
+  $('token').value = '';
+  $('settings').hidden = true;
+  setStatus('Zugang gespeichert.');
+  guarded(load);
+};
+$('add').onsubmit = e => {
+  e.preventDefault();
+  const url = $('url').value.trim();
+  const target = parseEuro($('target').value);
+  if (!/^https?:\/\//i.test(url)) { setStatus('Bitte einen vollständigen Link eingeben.', true); return; }
+  if (Number.isNaN(target)) { setStatus('Bitte einen gültigen Zielpreis eingeben.', true); return; }
+  const item = { id:`p${Date.now()}`, name:$('name').value.trim(), url, target };
+  guarded(async () => {
+    setStatus('Speichere…');
+    await saveItems([...items, item], `Neu: ${item.name}`);
+    $('add').reset(); $('add').hidden = true;
+    render();
+    await runCheck();
+    setStatus('Gespeichert. Die erste Prüfung läuft und dauert ein paar Minuten.');
+  });
+};
+async function load() {
+  [items, state] = await Promise.all([readJson(FILE), readJson('data/history.json')]);
+  render();
+}
+guarded(load);
+</script>
+</body>
+</html>
