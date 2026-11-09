@@ -1,7 +1,13 @@
 {
   "prices": {},
   "alerts": {},
-  "errors": {},
+  "errors": {
+    "nox-at10-12k-2026": {
+      "count": 1,
+      "message": "Preis nicht gefunden oder Seite blockiert",
+      "date": "2026-11-09"
+    }
+  },
   "ratings": {},
-  "updated": null
+  "updated": "2026-11-09"
 }
