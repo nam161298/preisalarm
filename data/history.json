@@ -3,11 +3,11 @@
   "alerts": {},
   "errors": {
     "nox-at10-12k-2026": {
-      "count": 4,
+      "count": 5,
       "message": "Preis nicht gefunden oder Seite blockiert",
-      "date": "2026-11-10"
+      "date": "2026-11-11"
     }
   },
   "ratings": {},
-  "updated": "2026-11-10"
+  "updated": "2026-11-11"
 }
