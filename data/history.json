@@ -3,7 +3,7 @@
   "alerts": {},
   "errors": {
     "nox-at10-12k-2026": {
-      "count": 10,
+      "count": 11,
       "message": "Preis nicht gefunden oder Seite blockiert",
       "date": "2026-11-13"
     }
