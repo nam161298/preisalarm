@@ -215,7 +215,7 @@ function render() {
     } else if (!err) {
       card.append(el('div', { className:'muted', textContent:item.eingerichtet ? 'Noch nicht geprüft.' : 'Neu: wird bei der nächsten Suche eingerichtet.' }));
     }
-    if (err) card.append(el('div', { className:'error', textContent:`Letzte Prüfung fehlgeschlagen (${err.count}×): ${err.message}` }));
+    if (err && item.eingerichtet !== 'unklar') card.append(el('div', { className:'error', textContent:`Letzte Prüfung fehlgeschlagen (${err.count}×): ${err.message}` }));
     card.append(el('div', { className:'muted', textContent:item.target ? `Zielpreis ${euro(item.target)}` : 'Kein Zielpreis' }));
     const spark = sparkline(list);
     if (spark) card.append(spark);

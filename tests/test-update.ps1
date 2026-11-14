@@ -62,5 +62,12 @@ Assert-Equal 'Ohne Fund: Fehler gezaehlt' ([int]$r3.state.errors['n'].count) 1
 Assert-Equal 'Ohne Fund: Historie bleibt' @($r3.state.prices['n']).Count 2
 Assert-Equal 'Ohne Fund: kein bestes Angebot' $r3.offers.items['n'].bestes $null
 
+# Produkt mit offener Rueckfrage
+$unklar = [pscustomobject]@{ id = 'u'; name = 'Unklar'; eingerichtet = 'unklar'; frage = '13 oder 15 Zoll?' }
+$st = [pscustomobject]@{ errors = [pscustomobject]@{ u = [pscustomobject]@{ count = 1; message = 'x'; date = '2026-11-14' } } }
+$r4 = Invoke-Update -Items @($item, $unklar) -State $st -Found $found -Notify $push
+Assert-Equal 'Unklar: kein Fehler gezaehlt' $r4.state.errors.ContainsKey('u') $false
+Assert-Equal 'Unklar: andere Produkte laufen weiter' @($r4.state.prices['n']).Count 1
+
 if ($script:failed) { Write-Host "$($script:failed) Test(s) fehlgeschlagen"; exit 1 }
 Write-Host 'Alle Tests bestanden'

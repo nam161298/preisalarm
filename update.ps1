@@ -65,7 +65,12 @@ function Invoke-Update {
         if (-not $best) { throw 'Kein geprueftes Angebot gefunden' }
         return [double]$best.gesamt
     }.GetNewClosure()
-    $newState = Invoke-Check -Items $Items -State $State -Fetch $fetch -Notify $Notify -Today ([string]$Found.datum)
+    # Produkte mit offener Rueckfrage nicht pruefen, sonst zaehlen sie als Fehler und loesen spaeter eine Meldung aus.
+    $checkItems = @($Items | Where-Object { $_.eingerichtet -ne 'unklar' })
+    if ($State -and $State.errors) {
+        foreach ($i in @($Items | Where-Object { $_.eingerichtet -eq 'unklar' })) { [void]$State.errors.PSObject.Properties.Remove([string]$i.id) }
+    }
+    $newState = Invoke-Check -Items $checkItems -State $State -Fetch $fetch -Notify $Notify -Today ([string]$Found.datum)
     return [ordered]@{ state = $newState; offers = [ordered]@{ updated = [string]$Found.datum; items = $offers } }
 }
 
