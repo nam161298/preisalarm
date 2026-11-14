@@ -16,14 +16,10 @@
                                          ]
                },
     "alerts":  {
-                   "nox-at10-12k-2026":  199.9
+
                },
     "errors":  {
-                   "p1794585804932":  {
-                                          "count":  1,
-                                          "message":  "Kein geprueftes Angebot gefunden",
-                                          "date":  "2026-11-14"
-                                      }
+
                },
     "ratings":  {
                     "nox-at10-12k-2026":  {
