@@ -45,6 +45,9 @@ ul.offers li.weak { opacity:.75; }
 .tag { display:inline-block; font-size:12px; padding:1px 6px; margin:2px 4px 0 0; border-radius:6px; border:1px solid var(--line); color:var(--muted); }
 .tag.warn { color:var(--bad); border-color:var(--bad); }
 .tag.good { color:var(--good); border-color:var(--good); }
+.alt { margin-top:8px; padding:8px 10px; border:1px dashed var(--line); border-radius:10px; }
+.alt .row { align-items:baseline; }
+.alt a { color:var(--text); }
 </style>
 </head>
 <body>
@@ -163,6 +166,15 @@ function sparkline(list) {
   svg.append(line);
   return svg;
 }
+// Guenstigstes Angebot, das nicht zaehlt (Shop unbekannt, ungeprueft, gebraucht), aber das richtige Modell ist.
+// Verdaechtige Shops (vermutlich Fake) werden nie hervorgehoben.
+function cheapestOther(info, best) {
+  if (!info) return null;
+  const list = [].concat(info.angebote || []).filter(o => !o.zaehlt && o.modell !== false && o.vertrauen !== 'verdacht'
+    && (!best || o.gesamt < best.gesamt));
+  list.sort((a, b) => a.gesamt - b.gesamt);
+  return list[0] || null;
+}
 function offerTags(o) {
   const tags = [];
   tags.push(o.quelle === 'geprueft' ? ['Preis geprüft', 'good'] : ['ungeprüft', '']);
@@ -205,7 +217,15 @@ function render() {
       const row = el('div', {}, el('span', { className:'price', textContent:euro(last.p) }));
       if (rating) row.append(el('span', { className:`badge ${rating.label}`, textContent:labels[rating.label] || rating.label }));
       card.append(row);
-      if (best) card.append(el('div', { className:'muted', textContent:`Günstigster geprüfter Preis bei ${best.shop}` }));
+      if (best) card.append(el('div', { className:'muted', textContent:`Günstigster sicherer Preis bei ${best.shop}` }));
+      const cheaper = cheapestOther(info, best);
+      if (cheaper) {
+        const name = /^https?:\/\//i.test(cheaper.url) ? el('a', { href:cheaper.url, target:'_blank', rel:'noopener', textContent:cheaper.shop }) : el('span', { textContent:cheaper.shop });
+        card.append(el('div', { className:'alt' },
+          el('div', { className:'row' }, el('span', {}, 'Noch günstiger, aber unsicher: ', name), el('strong', { textContent:euro(cheaper.gesamt) })),
+          el('div', {}, ...offerTags(cheaper)),
+          cheaper.hinweis ? el('div', { className:'muted', textContent:cheaper.hinweis }) : ''));
+      }
       if (rating) card.append(el('div', { className:'muted', textContent:rating.reason }));
       const facts = [`Stand ${last.d}`];
       if (rating) facts.push(`Tief ${euro(rating.low)}`, `Mitte ${euro(rating.median)}`);
@@ -222,7 +242,7 @@ function render() {
     const all = info ? offerList(info) : null;
     if (all) card.append(all);
     const chart = keepa(item.url || '');
-    if (chart) card.append(el('img', { className:'chart', src:chart, alt:`Keepa-Preisverlauf für ${item.name}`, loading:'lazy' }));
+    if (chart) card.append(el('img', { className:'chart', src:chart, alt:`Keepa-Preisverlauf für ${item.name}`, hidden:true, onload() { this.hidden = false; }, onerror() { this.remove(); } }));
     const shopUrl = (best && best.url) || item.url || '';
     const open = /^https?:\/\//i.test(shopUrl) ? el('a', { href:shopUrl, target:'_blank', rel:'noopener', textContent:'Zum günstigsten Shop' }) : '';
     const edit = el('button', { type:'button', textContent:'Zielpreis', onclick:() => editTarget(item) });
