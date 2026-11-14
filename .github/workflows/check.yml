@@ -1,8 +1,8 @@
 name: Preise pruefen
 
+# Seit 2026-11-14 nur noch von Hand: Die Preissuche laeuft taeglich am PC (SUCHE.md, update.ps1)
+# und laedt die Ergebnisse hoch. Die alte Cloud-Pruefung wird von Amazon gesperrt.
 on:
-  schedule:
-    - cron: '17 */6 * * *'
   workflow_dispatch:
 
 permissions:

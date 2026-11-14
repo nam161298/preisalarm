@@ -1,13 +1,38 @@
 {
-  "prices": {},
-  "alerts": {},
-  "errors": {
-    "nox-at10-12k-2026": {
-      "count": 12,
-      "message": "Preis nicht gefunden oder Seite blockiert",
-      "date": "2026-11-14"
-    }
-  },
-  "ratings": {},
-  "updated": "2026-11-14"
+    "prices":  {
+                   "nox-at10-12k-2026":  [
+                                             {
+                                                 "d":  "2026-11-11",
+                                                 "p":  199.9
+                                             },
+                                             {
+                                                 "d":  "2026-11-13",
+                                                 "p":  199.9
+                                             },
+                                             {
+                                                 "d":  "2026-11-14",
+                                                 "p":  199.9
+                                             }
+                                         ]
+               },
+    "alerts":  {
+                   "nox-at10-12k-2026":  199.9
+               },
+    "errors":  {
+                   "p1794585804932":  {
+                                          "count":  1,
+                                          "message":  "Kein geprueftes Angebot gefunden",
+                                          "date":  "2026-11-14"
+                                      }
+               },
+    "ratings":  {
+                    "nox-at10-12k-2026":  {
+                                              "label":  "zuschlagen",
+                                              "reason":  "Zielpreis erreicht",
+                                              "low":  199.9,
+                                              "median":  199.9,
+                                              "days":  3
+                                          }
+                },
+    "updated":  "2026-11-14"
 }

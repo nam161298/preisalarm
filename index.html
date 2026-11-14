@@ -35,6 +35,16 @@ label { display:block; font-size:14px; font-weight:600; margin:10px 0 4px; }
 input { width:100%; font:inherit; min-height:44px; padding:8px 10px; border-radius:10px; border:1px solid var(--line); background:var(--bg); color:var(--text); }
 #status { min-height:22px; margin-bottom:8px; }
 [hidden] { display:none !important; }
+details { margin-top:10px; }
+summary { cursor:pointer; min-height:44px; display:flex; align-items:center; color:var(--accent); font-weight:600; }
+ul.offers { list-style:none; margin:0; padding:0; }
+ul.offers li { padding:8px 0; border-top:1px solid var(--line); }
+ul.offers li.weak { opacity:.75; }
+.row { display:flex; justify-content:space-between; gap:8px; }
+.row a { color:var(--text); overflow-wrap:anywhere; }
+.tag { display:inline-block; font-size:12px; padding:1px 6px; margin:2px 4px 0 0; border-radius:6px; border:1px solid var(--line); color:var(--muted); }
+.tag.warn { color:var(--bad); border-color:var(--bad); }
+.tag.good { color:var(--good); border-color:var(--good); }
 </style>
 </head>
 <body>
@@ -49,15 +59,15 @@ input { width:100%; font:inherit; min-height:44px; padding:8px 10px; border-radi
   <form id="settings" hidden>
     <label for="token">GitHub-Token</label>
     <input id="token" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
-    <p class="muted">Bleibt nur auf diesem Handy gespeichert. Damit darf die App Produkte speichern und eine Prüfung starten.</p>
+    <p class="muted">Bleibt nur auf diesem Handy gespeichert. Damit darf die App Produkte und Zielpreise speichern.</p>
     <div class="actions"><button class="primary" type="submit">Speichern</button></div>
   </form>
 
   <form id="add" hidden>
     <label for="name">Produktname</label>
     <input id="name" required maxlength="120">
-    <label for="url">Link zur Produktseite</label>
-    <input id="url" type="url" inputmode="url" required autocapitalize="off" spellcheck="false" placeholder="https://www.amazon.de/dp/...">
+    <label for="url">Link zu einem Shop (optional)</label>
+    <input id="url" type="url" inputmode="url" autocapitalize="off" spellcheck="false" placeholder="Leer lassen: Jarviệt sucht in allen Shops">
     <label for="target">Zielpreis in Euro (optional)</label>
     <input id="target" inputmode="decimal" placeholder="z. B. 205">
     <div class="actions"><button class="primary" type="submit">Hinzufügen</button></div>
@@ -69,7 +79,9 @@ input { width:100%; font:inherit; min-height:44px; padding:8px 10px; border-radi
 const $ = id => document.getElementById(id);
 const labels = { zuschlagen:'Zuschlagen', ok:'Okay', warten:'Warten', sammeln:'Daten sammeln' };
 const FILE = 'data/items.json';
-let items = [], state = {};
+let items = [], state = {}, offers = {};
+// Am PC (localhost) speichert die App ueber serve.ps1, sonst ueber GitHub.
+const LOCAL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 
 const store = {
   get(k) { try { return localStorage.getItem(k) || ''; } catch { return ''; } },
@@ -98,6 +110,12 @@ async function readJson(path) {
 }
 function b64(text) { return btoa(String.fromCharCode(...new TextEncoder().encode(text))); }
 async function saveItems(next, message) {
+  if (LOCAL) {
+    const res = await fetch('api/items', { method:'POST', headers:{ 'Content-Type':'application/json', 'X-Preisalarm':'1' }, body:JSON.stringify(next) });
+    if (!res.ok) throw new Error(`Speichern fehlgeschlagen (${res.status})`);
+    items = next;
+    return;
+  }
   if (!store.get('token')) { $('settings').hidden = false; throw new Error('Bitte zuerst unter „Zugang“ dein Token eintragen.'); }
   const head = await api(`contents/${FILE}?t=${Date.now()}`);
   if (!head.ok) throw new Error(`GitHub meldet Fehler ${head.status}`);
@@ -107,10 +125,8 @@ async function saveItems(next, message) {
   if (!res.ok) throw new Error(`Speichern fehlgeschlagen (${res.status})`);
   items = next;
 }
-async function runCheck() {
-  const res = await api('actions/workflows/check.yml/dispatches', { method:'POST', body:JSON.stringify({ ref:'main' }) });
-  if (!res.ok) throw new Error(`Prüfung nicht gestartet (${res.status})`);
-}
+// Seit 2026-11-14 sucht Jarviệt taeglich am PC. Die alte Cloud-Pruefung wird nicht mehr gestartet.
+async function runCheck() {}
 function setStatus(text, isError = false) { $('status').textContent = text; $('status').className = isError ? 'error' : 'muted'; }
 function euro(n) { return Number(n).toLocaleString('de-DE', { style:'currency', currency:'EUR' }); }
 function parseEuro(text) {
@@ -147,6 +163,32 @@ function sparkline(list) {
   svg.append(line);
   return svg;
 }
+function offerTags(o) {
+  const tags = [];
+  tags.push(o.quelle === 'geprueft' ? ['Preis geprüft', 'good'] : ['ungeprüft', '']);
+  if (o.zustand === 'gebraucht') tags.push(['gebraucht', 'warn']);
+  if (o.zustand === 'unbekannt') tags.push(['Zustand unklar', 'warn']);
+  if (o.modell === false) tags.push(['anderes Modell?', 'warn']);
+  if (o.vertrauen === 'unbekannt') tags.push(['Shop unbekannt', 'warn']);
+  if (o.vertrauen === 'verdacht') tags.push(['Vorsicht', 'warn']);
+  if (o.land && o.land !== 'DE') tags.push([o.land, '']);
+  if (o.versand == null) tags.push(['zzgl. Versand?', '']);
+  return tags.map(([t, c]) => el('span', { className:`tag ${c}`, textContent:t }));
+}
+function offerList(info) {
+  const list = [].concat(info.angebote || []);
+  if (!list.length) return null;
+  const ul = el('ul', { className:'offers' });
+  for (const o of list) {
+    const name = /^https?:\/\//i.test(o.url) ? el('a', { href:o.url, target:'_blank', rel:'noopener', textContent:o.shop }) : el('span', { textContent:o.shop });
+    const li = el('li', { className:o.zaehlt ? '' : 'weak' },
+      el('div', { className:'row' }, name, el('strong', { textContent:euro(o.gesamt) })),
+      el('div', {}, ...offerTags(o)));
+    if (o.hinweis) li.append(el('div', { className:'muted', textContent:o.hinweis }));
+    ul.append(li);
+  }
+  return el('details', {}, el('summary', { textContent:`Alle Angebote (${list.length}) · Suche vom ${info.datum}` }), ul);
+}
 function render() {
   const box = $('list');
   box.replaceChildren();
@@ -156,28 +198,37 @@ function render() {
     const last = list[list.length - 1];
     const rating = state.ratings && state.ratings[item.id];
     const err = state.errors && state.errors[item.id];
+    const info = offers.items && offers.items[item.id];
+    const best = info && info.bestes;
     const card = el('article', { className:'card' }, el('h2', { textContent:item.name }));
     if (last) {
       const row = el('div', {}, el('span', { className:'price', textContent:euro(last.p) }));
       if (rating) row.append(el('span', { className:`badge ${rating.label}`, textContent:labels[rating.label] || rating.label }));
       card.append(row);
+      if (best) card.append(el('div', { className:'muted', textContent:`Günstigster geprüfter Preis bei ${best.shop}` }));
       if (rating) card.append(el('div', { className:'muted', textContent:rating.reason }));
       const facts = [`Stand ${last.d}`];
       if (rating) facts.push(`Tief ${euro(rating.low)}`, `Mitte ${euro(rating.median)}`);
       card.append(el('div', { className:'muted', textContent:facts.join(' · ') }));
+    } else if (item.eingerichtet === 'unklar') {
+      card.append(el('div', { className:'error', textContent:`Jarviệt braucht deine Hilfe: ${item.frage || 'Welches Modell genau?'}` }));
     } else if (!err) {
-      card.append(el('div', { className:'muted', textContent:'Noch nicht geprüft.' }));
+      card.append(el('div', { className:'muted', textContent:item.eingerichtet ? 'Noch nicht geprüft.' : 'Neu: wird bei der nächsten Suche eingerichtet.' }));
     }
     if (err) card.append(el('div', { className:'error', textContent:`Letzte Prüfung fehlgeschlagen (${err.count}×): ${err.message}` }));
     card.append(el('div', { className:'muted', textContent:item.target ? `Zielpreis ${euro(item.target)}` : 'Kein Zielpreis' }));
     const spark = sparkline(list);
     if (spark) card.append(spark);
-    const chart = keepa(item.url);
+    const all = info ? offerList(info) : null;
+    if (all) card.append(all);
+    const chart = keepa(item.url || '');
     if (chart) card.append(el('img', { className:'chart', src:chart, alt:`Keepa-Preisverlauf für ${item.name}`, loading:'lazy' }));
-    const open = /^https?:\/\//i.test(item.url) ? el('a', { href:item.url, target:'_blank', rel:'noopener', textContent:'Zum Shop' }) : '';
+    const shopUrl = (best && best.url) || item.url || '';
+    const open = /^https?:\/\//i.test(shopUrl) ? el('a', { href:shopUrl, target:'_blank', rel:'noopener', textContent:'Zum günstigsten Shop' }) : '';
     const edit = el('button', { type:'button', textContent:'Zielpreis', onclick:() => editTarget(item) });
     const del = el('button', { type:'button', textContent:'Entfernen', onclick:() => removeItem(item) });
-    card.append(el('div', { className:'actions' }, open, edit, del));
+    const idealo = /^https:\/\/www\.idealo\.de\//.test(item.idealo || '') ? el('a', { href:item.idealo, target:'_blank', rel:'noopener', textContent:'idealo' }) : '';
+    card.append(el('div', { className:'actions' }, open, idealo, edit, del));
     box.append(card);
   }
 }
@@ -217,7 +268,7 @@ $('add').onsubmit = e => {
   e.preventDefault();
   const url = $('url').value.trim();
   const target = parseEuro($('target').value);
-  if (!/^https?:\/\//i.test(url)) { setStatus('Bitte einen vollständigen Link eingeben.', true); return; }
+  if (url && !/^https?:\/\//i.test(url)) { setStatus('Bitte einen vollständigen Link eingeben oder das Feld leer lassen.', true); return; }
   if (Number.isNaN(target)) { setStatus('Bitte einen gültigen Zielpreis eingeben.', true); return; }
   const item = { id:`p${Date.now()}`, name:$('name').value.trim(), url, target };
   guarded(async () => {
@@ -226,11 +277,12 @@ $('add').onsubmit = e => {
     $('add').reset(); $('add').hidden = true;
     render();
     await runCheck();
-    setStatus('Gespeichert. Die erste Prüfung läuft und dauert ein paar Minuten.');
+    setStatus('Gespeichert. Jarviệt richtet das Produkt bei der nächsten täglichen Suche ein (ca. 10 Uhr, PC muss an sein).');
   });
 };
 async function load() {
   [items, state] = await Promise.all([readJson(FILE), readJson('data/history.json')]);
+  try { offers = await readJson('data/offers.json'); } catch { offers = {}; }
   render();
 }
 guarded(load);

@@ -1,8 +1,39 @@
 [
-  {
-    "id": "nox-at10-12k-2026",
-    "name": "Nox AT10 Genius 12K Alum Xtrem 2026",
-    "url": "https://www.amazon.de/dp/B0G168B7TB",
-    "target": 205
-  }
+    {
+        "id":  "nox-at10-12k-2026",
+        "name":  "Nox AT10 Genius 12K Alum Xtrem 2026",
+        "url":  "https://www.amazon.de/dp/B0G168B7TB",
+        "target":  205,
+        "ean":  "8435778902645",
+        "billiger":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-2026",
+        "idealo":  "https://www.idealo.de/preisvergleich/OffersOfProduct/208410110_-at10-genius-12k-alum-xtrem-2026-agustin-tapia-nox-sport.html",
+        "muss":  [
+                     "at10",
+                     "genius",
+                     "12k"
+                 ],
+        "nicht":  [
+                      "attack",
+                      "lite",
+                      "limited",
+                      "pack",
+                      "2025",
+                      "18k"
+                  ],
+        "kategorie":  "Padelschläger",
+        "fachsuche":  [
+                          "Padel Shop",
+                          "Padelschläger kaufen"
+                      ],
+        "ausland":  true,
+        "eingerichtet":  "2026-11-11"
+    },
+    {
+        "id":  "p1794585804932",
+        "name":  "Macbook Air m5 2026",
+        "url":  "",
+        "target":  null,
+        "eingerichtet":  "unklar",
+        "frage":  "Welche Variante? 13 oder 15 Zoll, und welcher Speicher (z. B. 16 GB/512 GB, 16 GB/1 TB, 24 GB/1 TB)? Farbe egal?"
+    }
 ]
