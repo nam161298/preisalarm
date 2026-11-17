@@ -1,11 +1,5 @@
 {
     "prices":  {
-                   "p1794585804932":  [
-                                          {
-                                              "d":  "2026-11-15",
-                                              "p":  1198
-                                          }
-                                      ],
                    "nox-at10-12k-2026":  [
                                              {
                                                  "d":  "2026-11-11",
@@ -22,8 +16,22 @@
                                              {
                                                  "d":  "2026-11-15",
                                                  "p":  199.9
+                                             },
+                                             {
+                                                 "d":  "2026-11-17",
+                                                 "p":  199.9
                                              }
-                                         ]
+                                         ],
+                   "p1794585804932":  [
+                                          {
+                                              "d":  "2026-11-15",
+                                              "p":  1198
+                                          },
+                                          {
+                                              "d":  "2026-11-17",
+                                              "p":  1193.95
+                                          }
+                                      ]
                },
     "alerts":  {
                    "nox-at10-12k-2026":  199.9
@@ -32,22 +40,22 @@
 
                },
     "ratings":  {
-                    "p1794585804932":  {
-                                           "label":  "sammeln",
-                                           "reason":  "Noch zu wenig eigene Daten (1 von 14 Tagen)",
-                                           "low":  1198,
-                                           "median":  1198,
-                                           "days":  1
-                                       },
                     "nox-at10-12k-2026":  {
                                               "label":  "zuschlagen",
                                               "reason":  "Zielpreis erreicht",
                                               "low":  199.9,
                                               "median":  199.9,
-                                              "days":  4
-                                          }
+                                              "days":  5
+                                          },
+                    "p1794585804932":  {
+                                           "label":  "sammeln",
+                                           "reason":  "Noch zu wenig eigene Daten (2 von 14 Tagen)",
+                                           "low":  1193.95,
+                                           "median":  1193.95,
+                                           "days":  2
+                                       }
                 },
-    "updated":  "2026-11-15",
+    "updated":  "2026-11-17",
     "alertsUnsicher":  {
                            "nox-at10-12k-2026":  171.16
                        }
