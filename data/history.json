@@ -20,6 +20,10 @@
                                              {
                                                  "d":  "2026-11-17",
                                                  "p":  199.9
+                                             },
+                                             {
+                                                 "d":  "2026-11-18",
+                                                 "p":  243
                                              }
                                          ],
                    "p1794585804932":  [
@@ -30,33 +34,37 @@
                                           {
                                               "d":  "2026-11-17",
                                               "p":  1193.95
+                                          },
+                                          {
+                                              "d":  "2026-11-18",
+                                              "p":  1199
                                           }
                                       ]
                },
     "alerts":  {
-                   "nox-at10-12k-2026":  199.9
+
                },
     "errors":  {
 
                },
     "ratings":  {
                     "nox-at10-12k-2026":  {
-                                              "label":  "zuschlagen",
-                                              "reason":  "Zielpreis erreicht",
+                                              "label":  "sammeln",
+                                              "reason":  "Noch zu wenig eigene Daten (6 von 14 Tagen)",
                                               "low":  199.9,
                                               "median":  199.9,
-                                              "days":  5
+                                              "days":  6
                                           },
                     "p1794585804932":  {
                                            "label":  "sammeln",
-                                           "reason":  "Noch zu wenig eigene Daten (2 von 14 Tagen)",
+                                           "reason":  "Noch zu wenig eigene Daten (3 von 14 Tagen)",
                                            "low":  1193.95,
-                                           "median":  1193.95,
-                                           "days":  2
+                                           "median":  1198,
+                                           "days":  3
                                        }
                 },
-    "updated":  "2026-11-17",
+    "updated":  "2026-11-18",
     "alertsUnsicher":  {
-                           "nox-at10-12k-2026":  171.16
+
                        }
 }

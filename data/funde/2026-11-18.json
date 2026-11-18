@@ -1,0 +1,27 @@
+{
+  "datum": "2026-11-18",
+  "zeit": "09:00",
+  "lauf": "pc",
+  "produkte": {
+    "nox-at10-12k-2026": {
+      "angebote": [
+        { "shop": "billiger.de-Händler (Name nicht angezeigt)", "url": "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-2026", "titel": "Nox AT10 Luxury Genius 12K Alum XTREM 2026 x Agustín Tapia Padel-Schläger", "preis": 205.95, "versand": 0,
+          "zustand": "neu", "land": "DE", "quelle": "geprueft", "vertrauen": "unbekannt", "hinweis": "Über billiger.de, Stand 18.11. Shopname nicht lesbar, 498 Bewertungen. idealo wurde im Browser nicht freigegeben" },
+        { "shop": "Irinasport (Marktplatz)", "url": "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-2026", "titel": "Nox At10 Genius 12k Alum Xtrem 2026 by Agustin Tapia Padelschläger Beige 360-375 gr", "preis": 243.00, "versand": 0,
+          "zustand": "neu", "land": "DE", "quelle": "geprueft", "vertrauen": "bekannt", "hinweis": "Über billiger.de, Stand 18.11. 22.206 Bewertungen" },
+        { "shop": "Andries B.V. (Marktplatz)", "url": "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-2026", "titel": "NOX Padelschläger AT10 Genius 12K Alum Xtrem 2026", "preis": 375.95, "versand": 0,
+          "zustand": "neu", "land": "NL", "quelle": "geprueft", "vertrauen": "bekannt", "hinweis": "Über billiger.de, Stand 18.11." }
+      ]
+    },
+    "p1794585804932": {
+      "angebote": [
+        { "shop": "Joybuy", "url": "https://www.billiger.de/products/5576129099-apple-macbook-air-m5-2026-13-6-16-gb-ram-512-gb-ssd-8-core-gpu-silber", "titel": "Apple 13 Zoll MacBook Air (M5, 2026) mit 10-Kern-CPU und 8-Kern-GPU, 16 GB, 512 GB SSD - Silber (deutsches QWERTZ-Tastaturlayout)", "preis": 1179.00, "versand": 0,
+          "zustand": "neu", "land": "DE", "quelle": "geprueft", "vertrauen": "unbekannt", "hinweis": "Über billiger.de, Stand 18.11. Farbe Silber, nur 5 Bewertungen" },
+        { "shop": "Amazon", "url": "https://www.billiger.de/products/5576129099-apple-macbook-air-m5-2026-13-6-16-gb-ram-512-gb-ssd-8-core-gpu-silber", "titel": "Apple 13\" MacBook Air Laptop, M5 Chip mit 10-Core CPU und 8-Core GPU, 16 GB, 512 GB SSD; Silber", "preis": 1199.00, "versand": 0,
+          "zustand": "neu", "land": "DE", "quelle": "geprueft", "vertrauen": "bekannt", "hinweis": "Über billiger.de, Stand 18.11. Farbe Silber. Shopname aus Titel abgeleitet" },
+        { "shop": "OTTO", "url": "https://www.billiger.de/products/5576129099-apple-macbook-air-m5-2026-13-6-16-gb-ram-512-gb-ssd-8-core-gpu-silber", "titel": "Apple 13-inch MacBook Air Notebook (34,46 cm/13,6 Zoll, Apple M5, 8-Core GPU, 16 GB, 512 GB SSD) silberfarben", "preis": 1199.00, "versand": 0,
+          "zustand": "neu", "land": "DE", "quelle": "geprueft", "vertrauen": "bekannt", "hinweis": "Über billiger.de, Stand 18.11. Farbe Silber" }
+      ]
+    }
+  }
+}
