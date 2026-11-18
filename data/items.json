@@ -82,10 +82,78 @@
   },
   {
     "id": "p1794679305234",
-    "name": "Philips Sonicare Series 6100",
-    "url": "",
+    "name": "Philips Sonicare 6100 HX7406/02 hellblau mit Reiseetui",
+    "url": "https://www.amazon.de/dp/B0DCGK1Y7X",
+    "target": 75,
+    "antwort": "2026-11-18 Anh Nam: nur das neuere Modell HX7406/02 mit Reiseetui, Variante ohne Etui verworfen. Aktuell 79,99 € bei Amazon (idealo günstigster Preis).",
+    "muss": [
+      "hx7406"
+    ],
+    "nicht": [
+      "hx6877",
+      "hx7400",
+      "hx7401",
+      "hx7403",
+      "aufsteckbürste",
+      "ersatzbürste"
+    ],
+    "idealo": "https://www.idealo.de/preisvergleich/OffersOfProduct/204913122_-sonicare-6100-hx7406-02-philips.html",
+    "kategorie": "Zahnbürste",
+    "ausland": false
+  },
+  {
+    "id": "p1795000000001",
+    "name": "AMZCHEF Slow Juicer 158 mm Einfüllschacht (Amazon B0FNM1BXMH)",
+    "url": "https://www.amazon.de/dp/B0FNM1BXMH",
+    "target": 80,
+    "antwort": "2026-11-18 Entsafter-Top-3 Platz 1: 89,99 €, 4,3 Sterne, 3.285 Bewertungen, Reinigung leicht. Zielpreis 80 € ist eine Schätzung.",
+    "kategorie": "Entsafter"
+  },
+  {
+    "id": "p1795000000002",
+    "name": "Fretta Entsafter Slow Juicer Edelstahl (Amazon B0DJ88C13C)",
+    "url": "https://www.amazon.de/dp/B0DJ88C13C",
+    "target": 80,
+    "antwort": "2026-11-18 Entsafter-Top-3 Platz 2: 89,99 €, 4,4 Sterne, 867 Bewertungen, Reinigung sehr leicht. Zielpreis 80 € ist eine Schätzung. Bei idealo gibt es ähnliche Fretta-Modelle mit anderem Preis, genaues Modell B0DJ88C13C beachten.",
+    "kategorie": "Entsafter"
+  },
+  {
+    "id": "p1795000000003",
+    "name": "AMZCHEF Entsafter Slow Juicer mit Rückwärts-Kau-Funktion (Amazon B0D2HP87S2)",
+    "url": "https://www.amazon.de/dp/B0D2HP87S2",
+    "target": 85,
+    "antwort": "2026-11-18 Entsafter-Top-3 Platz 3: 97,90 €, 4,4 Sterne, 2.960 Bewertungen. Zielpreis 85 € ist eine Schätzung.",
+    "kategorie": "Entsafter"
+  },
+  {
+    "id": "p1795000000004",
+    "name": "Comfee Mobiles Klimagerät MPPH-09CRN7 9000 BTU (Amazon B07KJYD1ZP)",
+    "url": "https://www.amazon.de/dp/B07KJYD1ZP",
     "target": null,
-    "eingerichtet": "unklar",
-    "frage": "Welche Ausführung? HX7400/01 weiß ohne Reiseetui (ab ca. 73 €), HX7406 mit Reiseetui (ab ca. 90 €) oder eine andere Farbe wie Marineblau HX7403 (ab ca. 99 €)?"
+    "antwort": "2026-11-18 Klimaanlage: 4,0 Sterne, 3.316 Bewertungen, ein Schlauch, für ca. 25–30 m². Aktueller Preis auf Amazon nicht sichtbar. Kein Zielpreis, erst Preis beobachten. Anh Nam wartet bis Black Friday bis März 2027.",
+    "kategorie": "Klimagerät"
+  },
+  {
+    "id": "p1795000000005",
+    "name": "Comfee Mobile Klimaanlage 4-in-1 12000 BTU (Amazon B0DXZ45LKG)",
+    "url": "https://www.amazon.de/dp/B0DXZ45LKG",
+    "target": 400,
+    "antwort": "2026-11-18 Klimaanlage: aktuell 499 €, 4,0 Sterne, nur 70 Bewertungen. Zielpreis 400 € ist eine Schätzung.",
+    "kategorie": "Klimagerät"
+  },
+  {
+    "id": "p1795000000006",
+    "name": "Midea PortaSplit 3,5 kW",
+    "url": "",
+    "target": 650,
+    "antwort": "2026-11-18 Klimaanlage: MediaMarkt 799,99 €, idealo ab 999 €, Aktionspreise 630–729 € gesehen. Zweiteilig, kein Abluftschlauch. Zielpreis 650 € ist eine Schätzung.",
+    "muss": [
+      "portasplit"
+    ],
+    "nicht": [
+      "cool",
+      "2,35"
+    ],
+    "kategorie": "Klimagerät"
   }
 ]
