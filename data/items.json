@@ -99,7 +99,9 @@
     ],
     "idealo": "https://www.idealo.de/preisvergleich/OffersOfProduct/204913122_-sonicare-6100-hx7406-02-philips.html",
     "kategorie": "Zahnbürste",
-    "ausland": false
+    "fachsuche": ["Zahnpflege Shop"],
+    "ausland": false,
+    "eingerichtet": "2026-11-19"
   },
   {
     "id": "p1795000000001",
@@ -107,6 +109,11 @@
     "url": "https://www.amazon.de/dp/B0FNM1BXMH",
     "target": 80,
     "antwort": "2026-11-18 Entsafter-Top-3 Platz 1: 89,99 €, 4,3 Sterne, 3.285 Bewertungen, Reinigung leicht. Zielpreis 80 € ist eine Schätzung.",
+    "muss": ["amzchef", "158"],
+    "nicht": ["ersatz", "sieb", "zubehör"],
+    "fachsuche": ["Küchengeräte Shop"],
+    "ausland": false,
+    "eingerichtet": "2026-11-19",
     "kategorie": "Entsafter"
   },
   {
@@ -115,6 +122,11 @@
     "url": "https://www.amazon.de/dp/B0DJ88C13C",
     "target": 80,
     "antwort": "2026-11-18 Entsafter-Top-3 Platz 2: 89,99 €, 4,4 Sterne, 867 Bewertungen, Reinigung sehr leicht. Zielpreis 80 € ist eine Schätzung. Bei idealo gibt es ähnliche Fretta-Modelle mit anderem Preis, genaues Modell B0DJ88C13C beachten.",
+    "muss": ["fretta", "slow juicer"],
+    "nicht": ["ersatz", "sieb", "zubehör"],
+    "fachsuche": ["Küchengeräte Shop"],
+    "ausland": false,
+    "eingerichtet": "2026-11-19",
     "kategorie": "Entsafter"
   },
   {
@@ -123,6 +135,11 @@
     "url": "https://www.amazon.de/dp/B0D2HP87S2",
     "target": 85,
     "antwort": "2026-11-18 Entsafter-Top-3 Platz 3: 97,90 €, 4,4 Sterne, 2.960 Bewertungen. Zielpreis 85 € ist eine Schätzung.",
+    "muss": ["amzchef", "rückwärts"],
+    "nicht": ["ersatz", "sieb", "zubehör"],
+    "fachsuche": ["Küchengeräte Shop"],
+    "ausland": false,
+    "eingerichtet": "2026-11-19",
     "kategorie": "Entsafter"
   },
   {
@@ -131,6 +148,11 @@
     "url": "https://www.amazon.de/dp/B07KJYD1ZP",
     "target": null,
     "antwort": "2026-11-18 Klimaanlage: 4,0 Sterne, 3.316 Bewertungen, ein Schlauch, für ca. 25–30 m². Aktueller Preis auf Amazon nicht sichtbar. Kein Zielpreis, erst Preis beobachten. Anh Nam wartet bis Black Friday bis März 2027.",
+    "muss": ["mpph-09crn7"],
+    "nicht": ["mpph-07", "mpph-12", "cppha", "gebraucht", "ersatz"],
+    "fachsuche": ["Klimagerät Shop"],
+    "ausland": false,
+    "eingerichtet": "2026-11-19",
     "kategorie": "Klimagerät"
   },
   {
@@ -139,6 +161,11 @@
     "url": "https://www.amazon.de/dp/B0DXZ45LKG",
     "target": 400,
     "antwort": "2026-11-18 Klimaanlage: aktuell 499 €, 4,0 Sterne, nur 70 Bewertungen. Zielpreis 400 € ist eine Schätzung.",
+    "muss": ["comfee", "12000"],
+    "nicht": ["9000", "7000", "gebraucht", "ersatz", "schlauch"],
+    "fachsuche": ["Klimagerät Shop"],
+    "ausland": false,
+    "eingerichtet": "2026-11-19",
     "kategorie": "Klimagerät"
   },
   {
@@ -154,6 +181,9 @@
       "cool",
       "2,35"
     ],
+    "fachsuche": ["Klimaanlage Shop"],
+    "ausland": false,
+    "eingerichtet": "2026-11-19",
     "kategorie": "Klimagerät"
   }
 ]

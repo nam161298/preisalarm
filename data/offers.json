@@ -1,8 +1,17 @@
 {
-    "updated":  "2026-11-18",
+    "updated":  "2026-11-19",
     "items":  {
-                  "p1794679305234":  {
-                                         "datum":  "2026-11-18",
+                  "p1795000000005":  {
+                                         "datum":  "2026-11-19",
+                                         "bestes":  {
+
+                                                    },
+                                         "angebote":  {
+
+                                                      }
+                                     },
+                  "p1795000000002":  {
+                                         "datum":  "2026-11-19",
                                          "bestes":  {
 
                                                     },
@@ -11,11 +20,11 @@
                                                       }
                                      },
                   "nox-at10-12k-2026":  {
-                                            "datum":  "2026-11-18",
+                                            "datum":  "2026-11-19",
                                             "bestes":  {
                                                            "shop":  "Irinasport (Marktplatz)",
-                                                           "url":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-2026",
-                                                           "titel":  "Nox At10 Genius 12k Alum Xtrem 2026 by Agustin Tapia Padelschläger Beige 360-375 gr",
+                                                           "url":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-by-agustin-tapia-padelschlaeger",
+                                                           "titel":  "Nox At10 Genius 12k Alum Xtrem 2026by Agustin Tapia Padelschläger Beige 360-375 gr",
                                                            "preis":  243,
                                                            "versand":  0,
                                                            "gesamt":  243,
@@ -23,15 +32,15 @@
                                                            "land":  "DE",
                                                            "quelle":  "geprueft",
                                                            "vertrauen":  "bekannt",
-                                                           "hinweis":  "Über billiger.de, Stand 18.11. 22.206 Bewertungen",
+                                                           "hinweis":  "Über billiger.de, Stand 2026-11-19, 22.207 Bewertungen",
                                                            "zaehlt":  true,
                                                            "modell":  true
                                                        },
                                             "angebote":  [
                                                              {
                                                                  "shop":  "Irinasport (Marktplatz)",
-                                                                 "url":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-2026",
-                                                                 "titel":  "Nox At10 Genius 12k Alum Xtrem 2026 by Agustin Tapia Padelschläger Beige 360-375 gr",
+                                                                 "url":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-by-agustin-tapia-padelschlaeger",
+                                                                 "titel":  "Nox At10 Genius 12k Alum Xtrem 2026by Agustin Tapia Padelschläger Beige 360-375 gr",
                                                                  "preis":  243,
                                                                  "versand":  0,
                                                                  "gesamt":  243,
@@ -39,28 +48,13 @@
                                                                  "land":  "DE",
                                                                  "quelle":  "geprueft",
                                                                  "vertrauen":  "bekannt",
-                                                                 "hinweis":  "Über billiger.de, Stand 18.11. 22.206 Bewertungen",
+                                                                 "hinweis":  "Über billiger.de, Stand 2026-11-19, 22.207 Bewertungen",
                                                                  "zaehlt":  true,
                                                                  "modell":  true
                                                              },
                                                              {
-                                                                 "shop":  "Andries B.V. (Marktplatz)",
-                                                                 "url":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-2026",
-                                                                 "titel":  "NOX Padelschläger AT10 Genius 12K Alum Xtrem 2026",
-                                                                 "preis":  375.95,
-                                                                 "versand":  0,
-                                                                 "gesamt":  375.95,
-                                                                 "zustand":  "neu",
-                                                                 "land":  "NL",
-                                                                 "quelle":  "geprueft",
-                                                                 "vertrauen":  "bekannt",
-                                                                 "hinweis":  "Über billiger.de, Stand 18.11.",
-                                                                 "zaehlt":  true,
-                                                                 "modell":  true
-                                                             },
-                                                             {
-                                                                 "shop":  "billiger.de-Händler (Name nicht angezeigt)",
-                                                                 "url":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-2026",
+                                                                 "shop":  "billiger.de Shop (Name nicht sichtbar)",
+                                                                 "url":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-by-agustin-tapia-padelschlaeger",
                                                                  "titel":  "Nox AT10 Luxury Genius 12K Alum XTREM 2026 x Agustín Tapia Padel-Schläger",
                                                                  "preis":  205.95,
                                                                  "versand":  0,
@@ -69,64 +63,160 @@
                                                                  "land":  "DE",
                                                                  "quelle":  "geprueft",
                                                                  "vertrauen":  "unbekannt",
-                                                                 "hinweis":  "Über billiger.de, Stand 18.11. Shopname nicht lesbar, 498 Bewertungen. idealo wurde im Browser nicht freigegeben",
+                                                                 "hinweis":  "Über billiger.de, Stand 2026-11-19, 558 Bewertungen, Shopname auf der Seite nicht lesbar",
+                                                                 "zaehlt":  false,
+                                                                 "modell":  true
+                                                             },
+                                                             {
+                                                                 "shop":  "billiger.de Shop 2 (Name nicht sichtbar)",
+                                                                 "url":  "https://www.billiger.de/pricelist/5414056167-nox-xtreme-nox-at10-genius-12k-alum-xtrem-by-agustin-tapia-padelschlaeger",
+                                                                 "titel":  "Nox At10 Genius 12k Alum Xtrem By Agustin Tapia 2026",
+                                                                 "preis":  229.95,
+                                                                 "versand":  0,
+                                                                 "gesamt":  229.95,
+                                                                 "zustand":  "neu",
+                                                                 "land":  "DE",
+                                                                 "quelle":  "geprueft",
+                                                                 "vertrauen":  "unbekannt",
+                                                                 "hinweis":  "Über billiger.de, Stand 2026-11-19, 23 Bewertungen",
+                                                                 "zaehlt":  false,
+                                                                 "modell":  true
+                                                             },
+                                                             {
+                                                                 "shop":  "Padelshop.com",
+                                                                 "url":  "https://padelshop.com/de/products/nox-at10-genius-12k-alum-xtreme-2026",
+                                                                 "titel":  "Nox AT10 GENIUS 12K ALUM Xtreme 2026",
+                                                                 "preis":  259.95,
+                                                                 "versand":  null,
+                                                                 "gesamt":  259.95,
+                                                                 "zustand":  "neu",
+                                                                 "land":  "ES",
+                                                                 "quelle":  "suchtreffer",
+                                                                 "vertrauen":  "unbekannt",
+                                                                 "hinweis":  "Websuche, Preis laut Suchergebnis, Seite nicht geöffnet",
                                                                  "zaehlt":  false,
                                                                  "modell":  true
                                                              }
                                                          ]
                                         },
-                  "p1794585804932":  {
-                                         "datum":  "2026-11-18",
+                  "p1795000000004":  {
+                                         "datum":  "2026-11-19",
                                          "bestes":  {
-                                                        "shop":  "Amazon",
+
+                                                    },
+                                         "angebote":  {
+                                                          "shop":  "Amazon.de",
+                                                          "url":  "https://www.amazon.de/dp/B07KJYD1ZP",
+                                                          "titel":  "Comfee Mobiles Klimagerät MPPH-09CRN7 9000 BTU",
+                                                          "preis":  269,
+                                                          "versand":  null,
+                                                          "gesamt":  269,
+                                                          "zustand":  "neu",
+                                                          "land":  "DE",
+                                                          "quelle":  "suchtreffer",
+                                                          "vertrauen":  "bekannt",
+                                                          "hinweis":  "Websuche: Deal-Artikel nennt 269 € statt 409 €, Datum unklar, Seite nicht geprüft",
+                                                          "zaehlt":  false,
+                                                          "modell":  true
+                                                      }
+                                     },
+                  "p1795000000006":  {
+                                         "datum":  "2026-11-19",
+                                         "bestes":  {
+
+                                                    },
+                                         "angebote":  {
+                                                          "shop":  "Klimaworld",
+                                                          "url":  "https://www.klimaworld.com/products/midea-portasplit-mobile-split-klimaanlage-3-5-kw30038",
+                                                          "titel":  "MIDEA PortaSplit mobile Split Klimaanlage 3,5 kW",
+                                                          "preis":  1099,
+                                                          "versand":  null,
+                                                          "gesamt":  1099,
+                                                          "zustand":  "neu",
+                                                          "land":  "DE",
+                                                          "quelle":  "suchtreffer",
+                                                          "vertrauen":  "unbekannt",
+                                                          "hinweis":  "Websuche, zzgl. Versand, Seite nicht geöffnet. OBI-Deal im Mai 2026 752,39 € ist abgelaufen",
+                                                          "zaehlt":  false,
+                                                          "modell":  true
+                                                      }
+                                     },
+                  "p1795000000001":  {
+                                         "datum":  "2026-11-19",
+                                         "bestes":  {
+
+                                                    },
+                                         "angebote":  {
+
+                                                      }
+                                     },
+                  "p1794679305234":  {
+                                         "datum":  "2026-11-19",
+                                         "bestes":  {
+
+                                                    },
+                                         "angebote":  {
+                                                          "shop":  "Heise Preisvergleich (Shop nicht sichtbar)",
+                                                          "url":  "https://preisvergleich.heise.de/philips-hx7406-02-sonicare-6100-a3321190.html",
+                                                          "titel":  "Philips HX7406/02 Sonicare 6100",
+                                                          "preis":  98,
+                                                          "versand":  null,
+                                                          "gesamt":  98,
+                                                          "zustand":  "neu",
+                                                          "land":  "DE",
+                                                          "quelle":  "suchtreffer",
+                                                          "vertrauen":  "unbekannt",
+                                                          "hinweis":  "Websuche, Heise-Vergleich nennt 98 bis 99,67 €, Seite nicht geöffnet; idealo-Seite im Browser nicht freigegeben. Anh Nam nannte 79,99 € bei Amazon, nicht bestätigt",
+                                                          "zaehlt":  false,
+                                                          "modell":  true
+                                                      }
+                                     },
+                  "p1795000000003":  {
+                                         "datum":  "2026-11-19",
+                                         "bestes":  {
+
+                                                    },
+                                         "angebote":  {
+
+                                                      }
+                                     },
+                  "p1794585804932":  {
+                                         "datum":  "2026-11-19",
+                                         "bestes":  {
+                                                        "shop":  "OTTO (Marktplatz)",
                                                         "url":  "https://www.billiger.de/products/5576129099-apple-macbook-air-m5-2026-13-6-16-gb-ram-512-gb-ssd-8-core-gpu-silber",
-                                                        "titel":  "Apple 13\" MacBook Air Laptop, M5 Chip mit 10-Core CPU und 8-Core GPU, 16 GB, 512 GB SSD; Silber",
-                                                        "preis":  1199,
+                                                        "titel":  "Apple 13-inch MacBook Air Notebook (Apple M5, 8-Core GPU, 16 GB, 512 GB SSD) silberfarben",
+                                                        "preis":  1207.32,
                                                         "versand":  0,
-                                                        "gesamt":  1199,
+                                                        "gesamt":  1207.32,
                                                         "zustand":  "neu",
                                                         "land":  "DE",
                                                         "quelle":  "geprueft",
                                                         "vertrauen":  "bekannt",
-                                                        "hinweis":  "Über billiger.de, Stand 18.11. Farbe Silber. Shopname aus Titel abgeleitet",
+                                                        "hinweis":  "Über billiger.de, Stand 2026-11-19, Silber (nicht bevorzugte Farbe)",
                                                         "zaehlt":  true,
                                                         "modell":  true
                                                     },
                                          "angebote":  [
                                                           {
-                                                              "shop":  "OTTO",
+                                                              "shop":  "OTTO (Marktplatz)",
                                                               "url":  "https://www.billiger.de/products/5576129099-apple-macbook-air-m5-2026-13-6-16-gb-ram-512-gb-ssd-8-core-gpu-silber",
-                                                              "titel":  "Apple 13-inch MacBook Air Notebook (34,46 cm/13,6 Zoll, Apple M5, 8-Core GPU, 16 GB, 512 GB SSD) silberfarben",
-                                                              "preis":  1199,
+                                                              "titel":  "Apple 13-inch MacBook Air Notebook (Apple M5, 8-Core GPU, 16 GB, 512 GB SSD) silberfarben",
+                                                              "preis":  1207.32,
                                                               "versand":  0,
-                                                              "gesamt":  1199,
+                                                              "gesamt":  1207.32,
                                                               "zustand":  "neu",
                                                               "land":  "DE",
                                                               "quelle":  "geprueft",
                                                               "vertrauen":  "bekannt",
-                                                              "hinweis":  "Über billiger.de, Stand 18.11. Farbe Silber",
+                                                              "hinweis":  "Über billiger.de, Stand 2026-11-19, Silber (nicht bevorzugte Farbe)",
                                                               "zaehlt":  true,
                                                               "modell":  true
                                                           },
                                                           {
-                                                              "shop":  "Amazon",
+                                                              "shop":  "billiger.de Shop (Name nicht sichtbar)",
                                                               "url":  "https://www.billiger.de/products/5576129099-apple-macbook-air-m5-2026-13-6-16-gb-ram-512-gb-ssd-8-core-gpu-silber",
-                                                              "titel":  "Apple 13\" MacBook Air Laptop, M5 Chip mit 10-Core CPU und 8-Core GPU, 16 GB, 512 GB SSD; Silber",
-                                                              "preis":  1199,
-                                                              "versand":  0,
-                                                              "gesamt":  1199,
-                                                              "zustand":  "neu",
-                                                              "land":  "DE",
-                                                              "quelle":  "geprueft",
-                                                              "vertrauen":  "bekannt",
-                                                              "hinweis":  "Über billiger.de, Stand 18.11. Farbe Silber. Shopname aus Titel abgeleitet",
-                                                              "zaehlt":  true,
-                                                              "modell":  true
-                                                          },
-                                                          {
-                                                              "shop":  "Joybuy",
-                                                              "url":  "https://www.billiger.de/products/5576129099-apple-macbook-air-m5-2026-13-6-16-gb-ram-512-gb-ssd-8-core-gpu-silber",
-                                                              "titel":  "Apple 13 Zoll MacBook Air (M5, 2026) mit 10-Kern-CPU und 8-Kern-GPU, 16 GB, 512 GB SSD - Silber (deutsches QWERTZ-Tastaturlayout)",
+                                                              "titel":  "Apple MacBook Air 13\" 2026 M5/16/512GB 10C CPU 8C GPU Silber MDH74D/A",
                                                               "preis":  1179,
                                                               "versand":  0,
                                                               "gesamt":  1179,
@@ -134,7 +224,22 @@
                                                               "land":  "DE",
                                                               "quelle":  "geprueft",
                                                               "vertrauen":  "unbekannt",
-                                                              "hinweis":  "Über billiger.de, Stand 18.11. Farbe Silber, nur 5 Bewertungen",
+                                                              "hinweis":  "Über billiger.de, Stand 2026-11-19, mehrere Shops mit 1.179 €, Shopnamen auf der Seite nicht lesbar, Silber",
+                                                              "zaehlt":  false,
+                                                              "modell":  true
+                                                          },
+                                                          {
+                                                              "shop":  "billiger.de Shop 2 (Name nicht sichtbar)",
+                                                              "url":  "https://www.billiger.de/products/5576129099-apple-macbook-air-m5-2026-13-6-16-gb-ram-512-gb-ssd-8-core-gpu-silber",
+                                                              "titel":  "Apple MacBook Air 13\" (2026) M5 (10 CPU / 8 GPU) 16GB/512GB Silber QWERTZ",
+                                                              "preis":  1199,
+                                                              "versand":  0,
+                                                              "gesamt":  1199,
+                                                              "zustand":  "neu",
+                                                              "land":  "DE",
+                                                              "quelle":  "geprueft",
+                                                              "vertrauen":  "unbekannt",
+                                                              "hinweis":  "Über billiger.de, Stand 2026-11-19, 5.234 Bewertungen, Shopname nicht lesbar, Silber",
                                                               "zaehlt":  false,
                                                               "modell":  true
                                                           }
