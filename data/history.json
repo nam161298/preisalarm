@@ -28,6 +28,10 @@
                                              {
                                                  "d":  "2026-11-19",
                                                  "p":  243
+                                             },
+                                             {
+                                                 "d":  "2026-11-20",
+                                                 "p":  243
                                              }
                                          ],
                    "p1794585804932":  [
@@ -46,6 +50,10 @@
                                           {
                                               "d":  "2026-11-19",
                                               "p":  1207.32
+                                          },
+                                          {
+                                              "d":  "2026-11-20",
+                                              "p":  1207.32
                                           }
                                       ]
                },
@@ -54,58 +62,58 @@
                },
     "errors":  {
                    "p1795000000005":  {
-                                          "count":  2,
+                                          "count":  3,
                                           "message":  "Kein geprueftes Angebot gefunden",
-                                          "date":  "2026-11-19"
+                                          "date":  "2026-11-20"
                                       },
                    "p1795000000002":  {
-                                          "count":  2,
+                                          "count":  3,
                                           "message":  "Kein geprueftes Angebot gefunden",
-                                          "date":  "2026-11-19"
+                                          "date":  "2026-11-20"
                                       },
                    "p1795000000004":  {
-                                          "count":  2,
+                                          "count":  3,
                                           "message":  "Kein geprueftes Angebot gefunden",
-                                          "date":  "2026-11-19"
+                                          "date":  "2026-11-20"
                                       },
                    "p1795000000006":  {
-                                          "count":  2,
+                                          "count":  3,
                                           "message":  "Kein geprueftes Angebot gefunden",
-                                          "date":  "2026-11-19"
+                                          "date":  "2026-11-20"
                                       },
                    "p1795000000001":  {
-                                          "count":  2,
+                                          "count":  3,
                                           "message":  "Kein geprueftes Angebot gefunden",
-                                          "date":  "2026-11-19"
+                                          "date":  "2026-11-20"
                                       },
                    "p1794679305234":  {
-                                          "count":  2,
+                                          "count":  3,
                                           "message":  "Kein geprueftes Angebot gefunden",
-                                          "date":  "2026-11-19"
+                                          "date":  "2026-11-20"
                                       },
                    "p1795000000003":  {
-                                          "count":  2,
+                                          "count":  3,
                                           "message":  "Kein geprueftes Angebot gefunden",
-                                          "date":  "2026-11-19"
+                                          "date":  "2026-11-20"
                                       }
                },
     "ratings":  {
                     "nox-at10-12k-2026":  {
                                               "label":  "sammeln",
-                                              "reason":  "Noch zu wenig eigene Daten (7 von 14 Tagen)",
+                                              "reason":  "Noch zu wenig eigene Daten (8 von 14 Tagen)",
                                               "low":  199.9,
                                               "median":  199.9,
-                                              "days":  7
+                                              "days":  8
                                           },
                     "p1794585804932":  {
                                            "label":  "sammeln",
-                                           "reason":  "Noch zu wenig eigene Daten (4 von 14 Tagen)",
+                                           "reason":  "Noch zu wenig eigene Daten (5 von 14 Tagen)",
                                            "low":  1193.95,
-                                           "median":  1198,
-                                           "days":  4
+                                           "median":  1199,
+                                           "days":  5
                                        }
                 },
-    "updated":  "2026-11-19",
+    "updated":  "2026-11-20",
     "alertsUnsicher":  {
 
                        }
